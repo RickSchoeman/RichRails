@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.*;
 
 public class GraphicView extends View {
-	ArrayList<Train> trains = new ArrayList<Train>();
+	ArrayList<Train> trainArrayList = new ArrayList<>();
 
 	public GraphicView() {
 		this.setLayout(new GridLayout(1,1));
@@ -18,11 +18,11 @@ public class GraphicView extends View {
 	}
 
 	public void paint(Graphics g) throws ConcurrentModificationException{
-		if (trains.size() > 0) {
+		if (trainArrayList.size() > 0) {
 			int x = 5;
 			int y = 5;
 			int width = 0;
-			for (Train t : trains) {
+			for (Train t : trainArrayList) {
 				if (!t.getWagons().isEmpty()) {
 					for (Wagon w : t.getWagons()) {
 						w.draw(g, x, y);
@@ -42,7 +42,7 @@ public class GraphicView extends View {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Controller controller) {
-		this.trains = controller.getTrains();
+		this.trainArrayList = controller.getTrains();
 		paint(this.getGraphics());
 	}
 }

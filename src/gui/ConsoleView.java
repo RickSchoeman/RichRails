@@ -9,22 +9,18 @@ import java.awt.*;
 import java.util.*;
 
 public class ConsoleView extends View {
-	ArrayList<Train> trains;
-	ArrayList<Wagon> wagons;
-	JTextArea outputpanel;
+	ArrayList<Train> trainArrayList;
+	ArrayList<Wagon> wagonArrayList;
+	JTextArea jTextArea;
 
 	public ConsoleView() {
-		trains = new ArrayList<Train>();
-		outputpanel = new JTextArea();
-
+		trainArrayList = new ArrayList<Train>();
+		jTextArea = new JTextArea();
 		this.setLayout(new GridLayout(1, 1));
-
-		outputpanel.setSize(350, 250);
-		outputpanel.setEditable(false);
-		outputpanel.setVisible(true);
-
-		this.add(outputpanel);
-
+		jTextArea.setSize(350, 250);
+		jTextArea.setEditable(false);
+		jTextArea.setVisible(true);
+		this.add(jTextArea);
 		this.setSize(350, 250);
 		this.setVisible(true);
 	}
@@ -33,13 +29,11 @@ public class ConsoleView extends View {
 		
 		String wagonsOutput = "";
 		String trainsOutput = "";
-		outputpanel.setText("");
-		
-		for (Wagon w1 : wagons) {
-			wagonsOutput = wagonsOutput + "(" + w1.getName() + ":"
-			+ w1.getSeats() + ") ";
+		jTextArea.setText("");
+		for (Wagon w : wagons) {
+			wagonsOutput = wagonsOutput + "(" + w.getName() + ":"
+			+ w.getSeats() + ") ";
 		}
-
 		for (Train t : trains) {
 			trainsOutput = trainsOutput + "(" + t.getName() + ")";
 			for (Wagon w : t.getWagons()) {
@@ -47,8 +41,7 @@ public class ConsoleView extends View {
 			}
 			trainsOutput = trainsOutput + "\n";
 		}
-
-		outputpanel.setText("--Wagons--\n" + wagonsOutput + "\n--Trains--\n"
+		jTextArea.setText("|Wagons|\n" + wagonsOutput + "\n|Trains|\n"
 				+ trainsOutput);
 	}
 
@@ -56,9 +49,9 @@ public class ConsoleView extends View {
 	@Override
 	public void update(Controller controller) {
 
-		this.trains = controller.getTrains();
-		this.wagons = controller.getWagons();
-		printText(trains, wagons);
+		this.trainArrayList = controller.getTrains();
+		this.wagonArrayList = controller.getWagons();
+		printText(trainArrayList, wagonArrayList);
 
 	}
 }

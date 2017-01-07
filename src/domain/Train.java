@@ -7,20 +7,20 @@ import java.util.*;
 
 public abstract class Train implements Subject {
 	protected String name;
-	private ArrayList<Wagon> wagons = new ArrayList<Wagon>();
-	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private ArrayList<Wagon> wagons = new ArrayList<>();
+	private ArrayList<Observer> observers = new ArrayList<>();
 	
 	public Train()
 	{
 		this.name = "";
-		this.wagons = new ArrayList<Wagon>();
+		this.wagons = new ArrayList<>();
 	}
 	
 	public Train(String name)
 	{
 		this();
 		this.name = name;
-		this.wagons = new ArrayList<Wagon>();
+		this.wagons = new ArrayList<>();
 	}
 	
 	public Train(String name, ArrayList<Wagon> wagons)
@@ -37,18 +37,6 @@ public abstract class Train implements Subject {
 	public ArrayList<Wagon> getWagons()
 	{
 		return wagons;
-	}
-	
-	public void setName(String name)
-	{
-		this.name = name;
-		notifyObservers();
-	}
-	
-	public void setWagons(ArrayList<Wagon> wagons)
-	{
-		this.wagons = wagons;
-		notifyObservers();
 	}
 	
 	public void addWagon(Wagon wagon)

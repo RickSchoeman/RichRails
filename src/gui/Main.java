@@ -47,21 +47,21 @@ public class Main {
 		c.addView(v3);
 		c.addView(v4);
 
-		Train t1 = new NormalTrain("Train1");
-		c.addTrain(t1);
+		Train train1 = new NormalTrain("Train1");
+		c.addTrain(train1);
 
-		t1.addObserver(c);
+		train1.addObserver(c);
 
-		Wagon w1 = new Locomotive("Locomotive Train1");
-		Wagon w2 = new NormalWagon("Normalw");
-		Wagon w3 = new EndWagon("Endw");
+		Wagon wagon1 = new Locomotive("Locomotive Train1");
+		Wagon wagon2 = new NormalWagon("Normalw");
+		Wagon wagon3 = new EndWagon("Endw");
 
-		c.addWagon(w1);
-		c.addWagon(w2);
-		c.addWagon(w3);
+		c.addWagon(wagon1);
+		c.addWagon(wagon2);
+		c.addWagon(wagon3);
 
-		t1.addWagon(w1);
-		t1.addWagon(w2);
-		t1.addWagon(w3);
+		train1.addWagon(wagon1);
+		train1.addWagon(wagon2);
+		train1.addWagon(wagon3);
 	}
 }

@@ -8,33 +8,33 @@ import java.util.*;
 
 public class LogView extends View {
 	ArrayList<String> commands;
-	JTextArea log;
+	JTextArea jTextArea;
 	
 	public LogView() {
 		commands = new ArrayList<String>();
-		log = new JTextArea();
+		jTextArea = new JTextArea();
 		
 		this.setLayout(new GridLayout(1,1));
 		
-		log.setSize(350, 250);
-		log.setBackground(Color.BLACK);
-		log.setForeground(Color.WHITE);
-		log.setText("Commands Executed: \n");
-		log.setEditable(false);
-		log.setVisible(true);
+		jTextArea.setSize(350, 250);
+		jTextArea.setBackground(Color.BLACK);
+		jTextArea.setForeground(Color.WHITE);
+		jTextArea.setText("Commando's Uitgevoerd: \n");
+		jTextArea.setEditable(false);
+		jTextArea.setVisible(true);
 		
-		this.add(log);
+		this.add(jTextArea);
 		
 		this.setSize(350,250);
 		this.setVisible(true);
 	}
 	
 	public void printLog(ArrayList<String> commands) {
-		log.setText("Commands Executed: \n");
+		jTextArea.setText("Commando's Uitgevoerd: \n");
 		if (commands.size() > 0) {
 			int size = commands.size();
 			for (int i = size-1; i >= 0; i--) {
-				log.setText(log.getText() + commands.get(i) + "\n");
+				jTextArea.setText(jTextArea.getText() + commands.get(i) + "\n");
 			}
 		}
 	}
