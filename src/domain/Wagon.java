@@ -9,7 +9,7 @@ import java.util.*;
 public abstract class Wagon implements Subject {
 	protected String name;
 	protected int seats;
-	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private ArrayList<Observer> observers = new ArrayList<>();
 	
 	public Wagon(){
 		this.name = "";
@@ -34,16 +34,6 @@ public abstract class Wagon implements Subject {
 
 	public int getSeats() {
 		return seats;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-		notifyObservers();
-	}
-
-	public void setSeats(int seats) {
-		this.seats = seats;
-		notifyObservers();
 	}
 	
 	public abstract void draw(Graphics g, int x, int y);

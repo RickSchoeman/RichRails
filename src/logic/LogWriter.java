@@ -23,7 +23,7 @@ public class LogWriter extends Writer
 			fileWriter.write(text + "\n");
 			fileWriter.close();
 		} catch (IOException ex) {
-			System.out.println("Error writing to file.");
+			System.out.println("Error in schrijven naar bestand.");
 		}
 		
 	}

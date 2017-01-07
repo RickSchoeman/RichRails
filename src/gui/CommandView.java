@@ -8,29 +8,25 @@ import java.awt.event.*;
 
 public class CommandView extends View implements ActionListener {
 	Controller controller;
-	JPanel executepanel;
-	JTextArea txtarea;
-	JTextField input;
-	JButton execute;
+	JPanel jpanel;
+	JTextArea jTxtArea;
+	JTextField jTextField;
+	JButton jButton;
 	
 	public CommandView() {
-		executepanel = new JPanel();
-		txtarea = new JTextArea();
-		input = new JTextField(20);
-		
-		txtarea.setText("command");
-		txtarea.setEditable(false);
-		
-		execute = new JButton("execute");
-		execute.addActionListener(this);
-		
-		executepanel.add(txtarea);
-		executepanel.add(input);
-		executepanel.add(execute);
-		executepanel.setSize(350,250);
-		executepanel.setVisible(true);
-		
-		this.add(executepanel);
+		jpanel = new JPanel();
+		jTxtArea = new JTextArea();
+		jTextField = new JTextField(20);
+		jTxtArea.setText("Commando");
+		jTxtArea.setEditable(false);
+		jButton = new JButton("Uitvoeren");
+		jButton.addActionListener(this);
+		jpanel.add(jTxtArea);
+		jpanel.add(jTextField);
+		jpanel.add(jButton);
+		jpanel.setSize(350,250);
+		jpanel.setVisible(true);
+		this.add(jpanel);
 		this.setSize(350,250);
 	}
 	
@@ -40,18 +36,16 @@ public class CommandView extends View implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		// en hier het gedeelte om via een command iets toe te voegen of te verwijderen etc.
-		if(e.getSource() == execute)
+		if(e.getSource() == jButton)
 		{
 			if(controller != null)
 			{
-				controller.split(input.getText());
+				controller.split(jTextField.getText());
 			}
 		}
 	}
 
 	@Override
 	public void update(Controller controller) {
-		//TODO
 	}
 }
