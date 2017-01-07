@@ -13,7 +13,7 @@ public class CreateWagonSeats extends Command {
 
 	@Override
 	public void execute(Controller c) {
-		NormalWagon nWagon = new NormalWagon(wName,seats);
+		BigWagon nWagon = new BigWagon(wName,seats);
 		c.addLogcommand("wagon " + wName + " created with " + seats + " seats");
 		c.addWagon(nWagon);
 	}

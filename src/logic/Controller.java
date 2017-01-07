@@ -91,8 +91,8 @@ public class Controller implements Observer {
 
 		public void split(String commandString) {
 			if (writers != null && writers.size() > 0) {
-				for (Writer writer : writers) {
-					writer.write(commandString);
+				for (Writer w : writers) {
+					w.write(commandString);
 				}
 			}
 			String[] word = commandString.split(" ");
@@ -101,66 +101,66 @@ public class Controller implements Observer {
 
 					if (word[0].equals("new")) {
 						if (word[1].equals("train")) {
-							CreateTrain c = new CreateTrain();
-							c.setTrain(word[2].substring(0, word[2].length()));
-							c.execute(this);
+							CreateTrain ct = new CreateTrain();
+							ct.setTrain(word[2].substring(0, word[2].length()));
+							ct.execute(this);
 						}
 	
 						else {
 							if (word[1].equals("wagon")) {
 								try {
 									if (word[3].equals("numseats")) {
-										CreateWagonSeats command = new CreateWagonSeats();
-										command.setWagon(word[2]);
-										command.setSeats(Integer.parseInt(word[4].substring(0, word[4].length())));
-										command.execute(this);
+										CreateWagonSeats cws = new CreateWagonSeats();
+										cws.setWagon(word[2]);
+										cws.setSeats(Integer.parseInt(word[4].substring(0, word[4].length())));
+										cws.execute(this);
 									}
 								}
 								catch(Exception e){
-									CreateWagon command = new CreateWagon();
-									command.setWagon(word[2].substring(0, word[2].length()));
-									command.execute(this);
+									CreateWagon cw = new CreateWagon();
+									cw.setWagon(word[2].substring(0, word[2].length()));
+									cw.execute(this);
 								}
 							}
 							
-							else if (word[1].equals("endwagon")) {
-								CreateEndWagon command = new CreateEndWagon();
-								command.setWagon(word[2].substring(0, word[2].length()));
-								command.execute(this);
+							else if (word[1].equals("smallwagon")) {
+								CreateSmallWagon cew = new CreateSmallWagon();
+								cew.setWagon(word[2].substring(0, word[2].length()));
+								cew.execute(this);
 							}
 						}
 					}
 	
 					else if (word[0].equals("getnumseats")) {
-						Seats command = new Seats();
+						Seats s = new Seats();
 						if (word[1].equals("wagon")) {
-							command.setWagon(word[2].substring(0, word[2].length()));
-							command.execute(this);
+							s.setWagon(word[2].substring(0, word[2].length()));
+							s.execute(this);
 						} 
 						else if (word[1].equals("train")) {
-							command.setTrain(word[2].substring(0, word[2].length()));
-							command.execute(this);
+							s.setTrain(word[2].substring(0, word[2].length()));
+							s.execute(this);
 						}
 					} else if (word[0].equals("add")) {
-						AddWagonToTrain command = new AddWagonToTrain();
-						command.setWagon(word[1]);
-						command.setTrain(word[3].substring(0, word[3].length()));
-						command.execute(this);
+						AddWagonToTrain awtt = new AddWagonToTrain();
+						awtt.setWagon(word[1]);
+						awtt.setTrain(word[3].substring(0, word[3].length()));
+						awtt.execute(this);
 					} else if (word[0].equals("delete")) {
 						if (word[1].equals("train")) {
-							DeleteTrain command = new DeleteTrain();
-							command.setTrain(word[2].substring(0, word[2].length()));
-							command.execute(this);
+							DeleteTrain dt = new DeleteTrain();
+							dt.setTrain(word[2].substring(0, word[2].length()));
+							dt.execute(this);
 						} else if (word[1].equals("wagon")) {
-							DeleteWagon command = new DeleteWagon();
-							command.setWagon(word[2].substring(0, word[2].length()));
-							command.execute(this);
+							DeleteWagon dw = new DeleteWagon();
+							dw.setWagon(word[2].substring(0, word[2].length()));
+							dw.execute(this);
 						}
 					} else if (word[0].equals("remove")) {
-						RemoveWagonFromTrain command = new RemoveWagonFromTrain();
-						command.setWagon(word[1]);
-						command.setTrain(word[3].substring(0, word[3].length()));
-						command.execute(this);
+						RemoveWagonFromTrain rwft = new RemoveWagonFromTrain();
+						rwft.setWagon(word[1]);
+						rwft.setTrain(word[3].substring(0, word[3].length()));
+						rwft.execute(this);
 
 					}
 
@@ -172,8 +172,8 @@ public class Controller implements Observer {
 
 	@Override
 	public void update() {
-		for (View view : views) {
-			view.update(this);
+		for (View v : views) {
+			v.update(this);
 		}
 	}
 }

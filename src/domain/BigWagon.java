@@ -2,19 +2,19 @@ package domain;
 
 import java.awt.*;
 
-public class NormalWagon extends Wagon {
+public class BigWagon extends Wagon {
 	
-	public NormalWagon()
+	public BigWagon()
 	{
 		super();
 	}
 	
-	public NormalWagon(String name)
+	public BigWagon(String name)
 	{
 		super(name);
 	}
 	
-	public NormalWagon(String name, int seats) {
+	public BigWagon(String name, int seats) {
 		super(name, seats);
 	}
 

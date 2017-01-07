@@ -1,6 +1,6 @@
 package gui;
 
-import domain.EndWagon;
+import domain.SmallWagon;
 import domain.*;
 import logic.Controller;
 import logic.LogWriter;
@@ -47,14 +47,14 @@ public class Main {
 		c.addView(v3);
 		c.addView(v4);
 
-		Train train1 = new NormalTrain("Train1");
+		Train train1 = new EntireTrain("Train1");
 		c.addTrain(train1);
 
 		train1.addObserver(c);
 
 		Wagon wagon1 = new Locomotive("Locomotive Train1");
-		Wagon wagon2 = new NormalWagon("Normalw");
-		Wagon wagon3 = new EndWagon("Endw");
+		Wagon wagon2 = new BigWagon("Bigw");
+		Wagon wagon3 = new SmallWagon("Smallw");
 
 		c.addWagon(wagon1);
 		c.addWagon(wagon2);

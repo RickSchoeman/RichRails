@@ -8,7 +8,7 @@ public class CreateTrain extends Command {
 
 	@Override
 	public void execute(Controller c) {
-		NormalTrain t = new NormalTrain(tName);
+		EntireTrain t = new EntireTrain(tName);
 		Locomotive l = new Locomotive("Locomotive " + tName);
 		c.addLogcommand("train " + tName + " created");
 		t.addWagon(l);

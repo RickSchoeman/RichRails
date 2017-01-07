@@ -1,9 +1,9 @@
 package commands;
 
-import domain.EndWagon;
+import domain.SmallWagon;
 import logic.Controller;
 
-public class CreateEndWagon extends Command{
+public class CreateSmallWagon extends Command{
 	
 	private String wName;
 
@@ -12,8 +12,8 @@ public class CreateEndWagon extends Command{
 
 	@Override
 	public void execute(Controller c) {
-		EndWagon end = new EndWagon(wName, 20);
-		c.addLogcommand("endwagon " + wName + " created with 20 seats");
+		SmallWagon end = new SmallWagon(wName, 20);
+		c.addLogcommand("smallwagon " + wName + " created with 20 seats");
 		c.addWagon(end);
 	}
 }
