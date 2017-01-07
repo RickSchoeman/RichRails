@@ -1,5 +1,6 @@
 package commands;
 
+import domain.EndWagon;
 import logic.Controller;
 
 public class CreateEndWagon extends Command{

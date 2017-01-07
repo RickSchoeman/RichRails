@@ -20,9 +20,10 @@ public class NormalWagon extends Wagon {
 
 	@Override
 	public void draw(Graphics g, int x, int y) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.GRAY);
 		g.fillRect(x, y, 120, 5);
 		g.fillRect((x+5), (y+5), 110, 70);
+		g.setColor(Color.DARK_GRAY);
 		g.fillOval((x+5), (y+75), 30, 30);
 		g.fillOval((x+85), (y+75), 30, 30);
 		g.setColor(Color.WHITE);

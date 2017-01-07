@@ -1,6 +1,6 @@
 package gui;
 
-import commands.EndWagon;
+import domain.EndWagon;
 import domain.*;
 import logic.Controller;
 import logic.LogWriter;
