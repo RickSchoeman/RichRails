@@ -139,7 +139,7 @@ public class Controller implements Observer {
 			String[] word = commandString.split(" ");
 			if (word[0].equals("new") || word[0].equals("add") || word[0].equals("remove")
 					|| word[0].equals("delete") || word[0].equals("getnumseats")) {
-				if (commandString.substring(commandString.length() - 1).equals(";")) {
+
 					if (word[0].equals("new")) {
 						if (word[1].equals("train")) {
 							CreateTrain c = new CreateTrain();
@@ -202,12 +202,9 @@ public class Controller implements Observer {
 						command.setWagon(word[1]);
 						command.setTrain(word[3].substring(0, word[3].length() - 1));
 						command.execute(this);
-	
+
 					}
-				} else
-					JOptionPane.showMessageDialog(null,
-							"Invalid command. Missing ; at the end");
-	
+
 			} else
 				JOptionPane
 						.showMessageDialog(null,
