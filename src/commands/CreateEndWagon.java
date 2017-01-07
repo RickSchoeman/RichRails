@@ -5,15 +5,15 @@ import logic.Controller;
 
 public class CreateEndWagon extends Command{
 	
-	private String wagonName;
+	private String wName;
 
-	public String getWagon(){ return wagonName; }
-	public void setWagon(String wagon){ this.wagonName = wagon; }
+	public String getWagon(){ return wName; }
+	public void setWagon(String w){ this.wName = w; }
 
 	@Override
-	public void execute(Controller controller) {
-		EndWagon end = new EndWagon(wagonName, 20);
-		controller.addLogcommand("endwagon " + wagonName + " created with 20 seats");
-		controller.addWagon(end);
+	public void execute(Controller c) {
+		EndWagon end = new EndWagon(wName, 20);
+		c.addLogcommand("endwagon " + wName + " created with 20 seats");
+		c.addWagon(end);
 	}
 }

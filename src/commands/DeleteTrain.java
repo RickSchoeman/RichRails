@@ -5,30 +5,30 @@ import domain.*;
 
 public class DeleteTrain extends Command {
 
-	private String trainName;
+	private String tName;
 
 	@Override
-	public void execute(Controller controller) {
-		for (Train train : controller.getTrains()) {
-			if (train.getName().equals(trainName)) {
-				controller.addLogcommand("train " + trainName + " deleted");
-				controller.removeTrain(train);
-				controller.removeWagon(train.getWagons().get(0));
+	public void execute(Controller c) {
+		for (Train t : c.getTrains()) {
+			if (t.getName().equals(tName)) {
+				c.addLogcommand("train " + tName + " deleted");
+				c.removeTrain(t);
+				c.removeWagon(t.getWagons().get(0));
 				break;
 			}
-			else if (controller.getTrains().indexOf(train) == (controller.getTrains().size() - 1)) {
-				controller.addLogcommand("train " + trainName + " does not exist");
-				controller.update();
+			else if (c.getTrains().indexOf(t) == (c.getTrains().size() - 1)) {
+				c.addLogcommand("train " + tName + " does not exist");
+				c.update();
 			}
 		}
 	}
 
-	public void setTrain(String train) {
-		this.trainName = train;
+	public void setTrain(String t) {
+		this.tName = t;
 	}
 
 	public String getTrain() {
-		return trainName;
+		return tName;
 	}
 
 }

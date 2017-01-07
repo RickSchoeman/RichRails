@@ -3,30 +3,30 @@ package commands;
 import logic.Controller;
 
 public abstract class Command {
-	protected String command;
+	protected String cmd;
 	
 	public Command()
 	{
-		this.command = "";
+		this.cmd = "";
 	}
 	
-	public Command(String command)
+	public Command(String c)
 	{
 		this();
-		this.setCommand(command);
+		this.setCommand(c);
 	}
 	
 	public String getCommand()
 	{
-		return command;
+		return cmd;
 	}
 	
-	public void setCommand(String command)
+	public void setCommand(String c)
 	{
-		this.command = command;
+		this.cmd = c;
 	}
 	
-	public abstract void execute(Controller controller);
+	public abstract void execute(Controller c);
 
 
 }

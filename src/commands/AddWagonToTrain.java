@@ -5,24 +5,24 @@ import domain.*;
 
 public class AddWagonToTrain extends Command {
 
-	private String wagonName;
-	private String trainName;
+	private String wName;
+	private String tName;
 
-	public String getWagon(){ return wagonName; }
-	public String getTrain(){ return trainName; }
-	public void setWagon(String wagon){ this.wagonName = wagon; }
-	public void setTrain(String train){ this.trainName = train; }
+	public String getWagon(){ return wName; }
+	public String getTrain(){ return tName; }
+	public void setWagon(String w){ this.wName = w; }
+	public void setTrain(String t){ this.tName = t; }
 
 	@Override
-	public void execute(Controller controller) {
+	public void execute(Controller c) {
 		boolean error1 = false;
 		boolean error2 = false;
-		for(Train t : controller.getTrains()){
-			if(t.getName().equals(trainName)){
-				for(Wagon wagonObject : controller.getWagons()){
-					if(wagonObject.getName().equals(wagonName)){
-						t.addWagon(wagonObject);
-						controller.addLogcommand("wagon " + wagonName + " added to train " + trainName);
+		for(Train t : c.getTrains()){
+			if(t.getName().equals(tName)){
+				for(Wagon wObject : c.getWagons()){
+					if(wObject.getName().equals(wName)){
+						t.addWagon(wObject);
+						c.addLogcommand("wagon " + wName + " added to train " + tName);
 						error1 = false;
 						error2 = false;
 						break;
@@ -36,12 +36,12 @@ public class AddWagonToTrain extends Command {
 		}
 		if(error1)
 		{
-			controller.addLogcommand("error: wagon " + wagonName + " does not exist and cannot be added to " + trainName);
+			c.addLogcommand("error: wagon " + wName + " does not exist and cannot be added to " + tName);
 		}else if(error2)
 		{
-			controller.addLogcommand("error: train " + trainName + " does not exist");
+			c.addLogcommand("error: train " + tName + " does not exist");
 		}
-		controller.update();
+		c.update();
 	}
 
 }

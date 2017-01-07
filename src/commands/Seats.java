@@ -5,45 +5,45 @@ import domain.*;
 
 public class Seats extends Command {
 
-	private String trainName;
-	private String wagonName;
-	private String seatString;
+	private String tName;
+	private String wName;
+	private String sString;
 	
-	public void execute(Controller controller) {
+	public void execute(Controller c) {
 		int seats = 0;
-		if(wagonName == null){
-			for(Train train : controller.getTrains()){
-				if(train.getName().equals(trainName)){
-					for(Wagon wagon :train.getWagons()){
-						seats += wagon.getSeats();
+		if(wName == null){
+			for(Train t : c.getTrains()){
+				if(t.getName().equals(tName)){
+					for(Wagon w :t.getWagons()){
+						seats += w.getSeats();
 					}
-					controller.addLogcommand("number of seats in train " + train.getName() + ": "+ seats);
-					controller.update();
+					c.addLogcommand("number of seats in train " + t.getName() + ": "+ seats);
+					c.update();
 				}
 			}
 		}
 		else{
-			for(Wagon wagon : controller.getWagons()){
-				if(wagon.getName().equals(wagonName)){
-					seats = wagon.getSeats();
-					controller.addLogcommand("number of seats in wagon " + wagon.getName() + ": "+ seats);
-					controller.update();
+			for(Wagon wa : c.getWagons()){
+				if(wa.getName().equals(wName)){
+					seats = wa.getSeats();
+					c.addLogcommand("number of seats in wagon " + wa.getName() + ": "+ seats);
+					c.update();
 				}
 			}
 		}
 	}
 	
 	public String getSeatString(){
-		return seatString;
+		return sString;
 	}
 	
 	void seatText(String s){
-		seatString = "number of seats in " + s;
+		sString = "number of seats in " + s;
 	}
 	
-	public void setTrain(String train) {this.trainName = train;	}
-	public String getTrain() {		return trainName;	}
-	public void setWagon(String wagon) {		this.wagonName = wagon;	}
-	public String getWagon() {		return wagonName;	}
+	public void setTrain(String t) {this.tName = t;	}
+	public String getTrain() {		return tName;	}
+	public void setWagon(String w) {		this.wName = w;	}
+	public String getWagon() {		return wName;	}
 
 }

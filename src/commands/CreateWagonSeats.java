@@ -5,17 +5,17 @@ import domain.*;
 
 public class CreateWagonSeats extends Command {
 
-	private String wagonName;
+	private String wName;
 	private int seats;
 
-	public String getWagon(){ return wagonName; }
-	public void setWagon(String wagon){ this.wagonName = wagon; }
+	public String getWagon(){ return wName; }
+	public void setWagon(String w){ this.wName = w; }
 
 	@Override
-	public void execute(Controller controller) {
-		NormalWagon normalWagon = new NormalWagon(wagonName,seats);
-		controller.addLogcommand("wagon " + wagonName + " created with " + seats + " seats");
-		controller.addWagon(normalWagon);
+	public void execute(Controller c) {
+		NormalWagon nWagon = new NormalWagon(wName,seats);
+		c.addLogcommand("wagon " + wName + " created with " + seats + " seats");
+		c.addWagon(nWagon);
 	}
 	public void setSeats(int seats) {
 		this.seats = seats;

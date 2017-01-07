@@ -5,23 +5,23 @@ import domain.*;
 
 public class RemoveWagonFromTrain extends Command {
 
-	private String wagonName;
-	private String trainName;
+	private String wName;
+	private String tName;
 
-	public String getWagon(){ return wagonName; }
-	public String getTrain(){ return trainName; }
-	public void setWagon(String wagon){ this.wagonName = wagon; }
-	public void setTrain(String train){ this.trainName = train; }
+	public String getWagon(){ return wName; }
+	public String getTrain(){ return tName; }
+	public void setWagon(String w){ this.wName = w; }
+	public void setTrain(String t){ this.tName = t; }
 
 	@Override
-	public void execute(Controller controller) {
+	public void execute(Controller c) {
 		boolean error = false;
-		for(Train train : controller.getTrains()){
-			if(train.getName().equals(trainName)){
-				for(Wagon wagon : train.getWagons()){
-					if(wagon.getName().equals(wagonName)){
-						train.removeWagon(wagon);
-						controller.addLogcommand("wagon " + wagonName + " was removed from train " + trainName);
+		for(Train t : c.getTrains()){
+			if(t.getName().equals(tName)){
+				for(Wagon w : t.getWagons()){
+					if(w.getName().equals(wName)){
+						t.removeWagon(w);
+						c.addLogcommand("wagon " + wName + " was removed from train " + tName);
 						error = false;
 						break;
 					}else{
@@ -32,10 +32,10 @@ public class RemoveWagonFromTrain extends Command {
 		}
 		if(error)
 		{
-			controller.addLogcommand("error: train " + trainName + " does not contain " + wagonName);
+			c.addLogcommand("error: train " + tName + " does not contain " + wName);
 		}
 		
-		controller.update();
+		c.update();
 	}
 
 }

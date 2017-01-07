@@ -4,24 +4,24 @@ import domain.*;
 
 public class CreateTrain extends Command {
 	
-	private String trainName;
+	private String tName;
 
 	@Override
-	public void execute(Controller controller) {
-		NormalTrain train = new NormalTrain(trainName);
-		Locomotive locomotive = new Locomotive("Locomotive " + trainName);
-		controller.addLogcommand("train " + trainName + " created");
-		train.addWagon(locomotive);
-		controller.addWagon(locomotive);
-		controller.addTrain(train);
+	public void execute(Controller c) {
+		NormalTrain t = new NormalTrain(tName);
+		Locomotive l = new Locomotive("Locomotive " + tName);
+		c.addLogcommand("train " + tName + " created");
+		t.addWagon(l);
+		c.addWagon(l);
+		c.addTrain(t);
 	}
 
-	public void setTrain(String train) {
-		this.trainName = train;
+	public void setTrain(String t) {
+		this.tName = t;
 	}
 
 	public String getTrain() {
-		return trainName;
+		return tName;
 	}
 
 }

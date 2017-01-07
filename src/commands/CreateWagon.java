@@ -6,16 +6,16 @@ import domain.*;
 
 public class CreateWagon extends Command {
 
-	private String wagonName;
+	private String wName;
 
-	public String getWagon(){ return wagonName; }
-	public void setWagon(String wagon){ this.wagonName = wagon; }
+	public String getWagon(){ return wName; }
+	public void setWagon(String w){ this.wName = w; }
 
 	@Override
 	public void execute(Controller c) {
-		NormalWagon normalWagon = new NormalWagon(wagonName, 20);
-		c.addLogcommand("wagon " + wagonName + " created with 20 seats");
-		c.addWagon(normalWagon);
+		NormalWagon nWagon = new NormalWagon(wName, 20);
+		c.addLogcommand("wagon " + wName + " created with 20 seats");
+		c.addWagon(nWagon);
 	}
 
 }
