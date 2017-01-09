@@ -3,7 +3,7 @@ package commands;
 import logic.Controller;
 import domain.*;
 
-public class DeleteWagon extends Command {
+public class DeleteWagonCommand extends Command {
 
 	private String wName;
 

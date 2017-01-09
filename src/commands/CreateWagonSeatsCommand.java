@@ -3,7 +3,7 @@ package commands;
 import logic.Controller;
 import domain.*;
 
-public class CreateWagonSeats extends Command {
+public class CreateWagonSeatsCommand extends Command {
 
 	private String wName;
 	private int seats;

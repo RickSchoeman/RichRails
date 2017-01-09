@@ -3,7 +3,7 @@ package commands;
 import domain.SmallWagon;
 import logic.Controller;
 
-public class CreateSmallWagon extends Command{
+public class CreateSmallWagonCommand extends Command{
 	
 	private String wName;
 

@@ -12,56 +12,57 @@ import java.awt.*;
 public class Main {
 	public static void main(String[] args)
 	{	
-		JFrame frame1 = new JFrame();
-		frame1.setLayout(new GridLayout(2,1));
-		frame1.setSize(1000, 700);
-		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame1.setVisible(true);
+		JFrame f = new JFrame();
+		f.setLayout(new GridLayout(2,1));
+		f.setSize(1000, 700);
+		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
 		
-		JPanel panel1 = new JPanel();
-		JPanel panel2 = new JPanel();
-		panel1.setLayout(new GridLayout(1,1));
-		panel2.setLayout(new GridLayout(2,1));
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
+		p1.setLayout(new GridLayout(1,1));
+		p2.setLayout(new GridLayout(2,1));
 
-		Writer writer = new LogWriter();
+		Writer w = new LogWriter();
 		
 		Controller c = new Controller();
 		
 		View v1 = new GraphicView();
 		View v2 = new ConsoleView();
 		View v3 = new LogView();
-		CommandView v4 = new CommandView();
+		CommandView commandView = new CommandView();
 		
-		v4.setController(c);
+		commandView.setController(c);
 		
-		panel1.add(v1);
-		panel2.add(v2);
-		panel2.add(v3);
-		panel2.add(v4);
-		frame1.add(panel1);
-		frame1.add(panel2);
+		p1.add(v1);
+		p2.add(v2);
+		p2.add(v3);
+		p2.add(commandView);
+		f.add(p1);
+		f.add(p2);
 		
-		c.addWriter(writer);
+		c.addWriter(w);
 		c.addView(v1);
 		c.addView(v2);
 		c.addView(v3);
-		c.addView(v4);
+		c.addView(commandView);
 
-		Train train1 = new EntireTrain("Train1");
-		c.addTrain(train1);
+		//Hier maken we een trein om te laten zien dat alle drie de soorten werken
 
-		train1.addObserver(c);
+		Train t = new EntireTrain("Train1");
+		c.addTrain(t);
+
+		t.addObserver(c);
 
 		Wagon wagon1 = new Locomotive("Locomotive Train1");
 		Wagon wagon2 = new BigWagon("Bigw");
 		Wagon wagon3 = new SmallWagon("Smallw");
-
 		c.addWagon(wagon1);
 		c.addWagon(wagon2);
 		c.addWagon(wagon3);
-
-		train1.addWagon(wagon1);
-		train1.addWagon(wagon2);
-		train1.addWagon(wagon3);
+		t.addWagon(wagon1);
+		t.addWagon(wagon2);
+		t.addWagon(wagon3);
 	}
 }

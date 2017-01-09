@@ -101,7 +101,7 @@ public class Controller implements Observer {
 
 					if (word[0].equals("new")) {
 						if (word[1].equals("train")) {
-							CreateTrain ct = new CreateTrain();
+							CreateTrainCommand ct = new CreateTrainCommand();
 							ct.setTrain(word[2].substring(0, word[2].length()));
 							ct.execute(this);
 						}
@@ -110,21 +110,21 @@ public class Controller implements Observer {
 							if (word[1].equals("wagon")) {
 								try {
 									if (word[3].equals("numseats")) {
-										CreateWagonSeats cws = new CreateWagonSeats();
+										CreateWagonSeatsCommand cws = new CreateWagonSeatsCommand();
 										cws.setWagon(word[2]);
 										cws.setSeats(Integer.parseInt(word[4].substring(0, word[4].length())));
 										cws.execute(this);
 									}
 								}
 								catch(Exception e){
-									CreateWagon cw = new CreateWagon();
+									CreateWagonCommand cw = new CreateWagonCommand();
 									cw.setWagon(word[2].substring(0, word[2].length()));
 									cw.execute(this);
 								}
 							}
 							
 							else if (word[1].equals("smallwagon")) {
-								CreateSmallWagon cew = new CreateSmallWagon();
+								CreateSmallWagonCommand cew = new CreateSmallWagonCommand();
 								cew.setWagon(word[2].substring(0, word[2].length()));
 								cew.execute(this);
 							}
@@ -132,7 +132,7 @@ public class Controller implements Observer {
 					}
 	
 					else if (word[0].equals("getnumseats")) {
-						Seats s = new Seats();
+						SeatsCommand s = new SeatsCommand();
 						if (word[1].equals("wagon")) {
 							s.setWagon(word[2].substring(0, word[2].length()));
 							s.execute(this);
@@ -142,22 +142,22 @@ public class Controller implements Observer {
 							s.execute(this);
 						}
 					} else if (word[0].equals("add")) {
-						AddWagonToTrain awtt = new AddWagonToTrain();
+						AddWagonToTrainCommand awtt = new AddWagonToTrainCommand();
 						awtt.setWagon(word[1]);
 						awtt.setTrain(word[3].substring(0, word[3].length()));
 						awtt.execute(this);
 					} else if (word[0].equals("delete")) {
 						if (word[1].equals("train")) {
-							DeleteTrain dt = new DeleteTrain();
+							DeleteTrainCommand dt = new DeleteTrainCommand();
 							dt.setTrain(word[2].substring(0, word[2].length()));
 							dt.execute(this);
 						} else if (word[1].equals("wagon")) {
-							DeleteWagon dw = new DeleteWagon();
+							DeleteWagonCommand dw = new DeleteWagonCommand();
 							dw.setWagon(word[2].substring(0, word[2].length()));
 							dw.execute(this);
 						}
 					} else if (word[0].equals("remove")) {
-						RemoveWagonFromTrain rwft = new RemoveWagonFromTrain();
+						RemoveWagonFromTrainCommand rwft = new RemoveWagonFromTrainCommand();
 						rwft.setWagon(word[1]);
 						rwft.setTrain(word[3].substring(0, word[3].length()));
 						rwft.execute(this);

@@ -4,7 +4,7 @@ import logic.Controller;
 import domain.*;
 
 
-public class CreateWagon extends Command {
+public class CreateWagonCommand extends Command {
 
 	private String wName;
 
